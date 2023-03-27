@@ -1,0 +1,67 @@
+<html>
+{% load static %}
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="{% static 'ebay/css/bootstrap.min.css' %}" >  
+<script src="{% static 'ebay/js/bootstrap.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'ebay/style.css' %}">
+
+<!-- Page title: Ebay tracker -->
+<h1 class="text-center">Ebay Tracker</h1>
+<!--  Search -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form action="{% url 'ebay:search' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="text" class="form-control" name="search" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go!</button>
+          </span>
+        </div><!-- /input-group -->
+      </form>
+    </div><!-- /.col-lg-6 -->
+  </div><!-- /.row -->
+
+<!-- some space -->
+<br>
+
+<!-- Display search results -->
+
+{% if data %}
+<div class="table-responsive-sm">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Item Name</th>
+                <th scope='col'>Condition</th>
+                <th scope='col'>Price</th>
+                <th scope='col'>Time left</th>
+                <th scope='col'>Shipping cost</th>
+            </tr>
+        </thead>
+    {% for item in data %}
+        <tbody>
+            <tr>
+                <th scope="row">{{ forloop.counter0 }}</th>
+                <td><a href="{{ item.itemlink }}"> {{ item.title }}</a></td>
+                <td>{{ item.condition }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.timeleft }}</td>
+                <td>{{ item.shippingcost }}</td>
+            </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+</div>
+{% else %}
+    <p>No item are available.</p>
+{% endif %}
+
+</html>
