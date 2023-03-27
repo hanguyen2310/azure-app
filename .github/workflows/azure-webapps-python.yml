@@ -81,4 +81,4 @@ jobs:
         with:
           app-name: 'habom'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1c6397aa34d04036991409a4b6a67962 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
