@@ -12,7 +12,7 @@ def main():
         load_dotenv('./.venv')
 
     # When running on Azure App Service you should use the production settings.
-    settings_module = "azureproject.production" if 'WEBSITE_HOSTNAME' in os.environ else 'azureproject.settings'
+    settings_module = "mysite.production" if 'WEBSITE_HOSTNAME' in os.environ else 'mysite.settings'
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
     try:
