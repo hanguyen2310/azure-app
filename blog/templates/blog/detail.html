@@ -1,0 +1,22 @@
+{% load static %}
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" >  
+<script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+
+<h1>Blog Info</h1> 
+
+<li><b> Title:</b> {{ blog.title }}</li>
+<li><b> Genre:</b> {{ blog.genre }}</li>
+<li><b> Content:</b> 
+    {% autoescape off %}
+    {{ blog.body }}
+    {% endautoescape %}
+</li>
+
+<a class="button" href="{% url 'blog:edit' blog.id %}">Edit post</a>

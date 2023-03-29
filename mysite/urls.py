@@ -21,5 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ebay.urls')),
+    path('blog/', include('blog.urls')),
+    path('ebay/', include('ebay.urls')),
+    path("user/", include("user.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

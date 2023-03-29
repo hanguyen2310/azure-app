@@ -1,0 +1,37 @@
+{% load static %}
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" >  
+<script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+<script src="{% static 'blog/js/md.js' %}"></script>
+
+<h1>Blog editor</h1> 
+
+<form action="{% url 'blog:edit_confirm' blog.id %}" method="post" id="editform">
+    {% csrf_token %}
+    <li><label for="title">Title:</label> <input type="text" id="title" name="title" value="{{ blog.title }}"></input></li>
+
+    <input type="submit" value="Submit">
+
+</form> 
+
+<li><label for="body">Body:</label>
+<div class="container"  style="padding:3px;">
+    <div id="mdedit-body" style="padding:3px; position: relative; top:0; bottom:0; left:0; right:0" class="row">
+        <div style="height:100%; width:50%" class="col-sm-6">
+            <textarea style="font-family: monospace; font-size: medium; color:#222; width:100%; height:100%" id="markdown_input" cols="80" rows="30" name="markdown_text" form="editform">{{blog.body}}</textarea>
+        </div>
+        <div style="height:100%; width:50%; padding-left:0px" class="col-sm-6">
+            <div class="html-output markdown-body border rounded-top" id="html_result" style=" height:100%"></div>
+        </div>
+    </div>
+</div>
+    
+
+
+    {% if error_message %}<p class="error_message">{{ error_message }}</p>{% endif %}
