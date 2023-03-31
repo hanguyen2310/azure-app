@@ -103,10 +103,10 @@
 				<!-- Begin Top Meta -->
 				<div class="row post-top-meta">
 					<div class="col-md-2">
-						<a href="author.html"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x" alt="Ha"></a>
+						<a href="{% url 'user:user_page' blog.author.username%}"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&d=mm&r=x" alt="Ha"></a>
 					</div>
 					<div class="col-md-10">
-						<a class="link-dark" href="author.html">Ha Nguyen</a><a href="#" class="btn follow">Follow</a><br>
+						<a class="link-dark" href="{% url 'user:user_page' blog.author.username%}">Ha Nguyen</a><a href="#" class="btn follow">Follow</a><br>
 						<span class="author-description">I'm Ha</span><br>
 						<span class="post-date">{{ blog.created_at }}</span><span class="dot"></span><span class="post-read">6 min read</span>
 					</div>
