@@ -5,11 +5,19 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import platform
 
 # silent browser
 options = webdriver.FirefoxOptions()
 options.add_argument("--headless")
-browser = webdriver.Firefox(options=options, executable_path="webdriver/geckodriver.exe")
+# check os if windows or linux
+
+if platform.system() == "Windows":
+    driver_path = "webdriver/windows/geckodriver.exe"
+if platform.system() == "Linux":
+    driver_path = "webdriver/linux/geckodriver"
+
+browser = webdriver.Firefox(options=options, executable_path=driver_path)
 
 def get_data(query, page='ebay'):
     page=page.lower()
