@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ebay.apps.EbayConfig',
+    'pricecheck.apps.PricecheckConfig',
     'blog.apps.BlogConfig',
     'user.apps.UserConfig',
 ]

@@ -1,0 +1,62 @@
+li a {
+    color: green;
+}
+.button {
+    display: block;
+    width: 115px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.error_message {
+    color: red;
+    font-weight: bold;
+}
+
+.CodeMirror {
+    font-size: medium;
+}
+
+.focusedInput {
+    border-color: #ccc;
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    outline: thin dotted \9;
+    -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+    box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+.html-output {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px;
+    box-shadow: none;
+    position: relative;
+    padding: 15px 15px 0px;
+    height:100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+@media (min-width: 768px) {
+    .row.equal {
+      display: flex;
+      flex-wrap: wrap;
+    }
+}
+
+.markdown-body{
+font-family: sans-serif;
+font-size:15px;
+line-height:1.7;
+word-wrap:break-word
+}

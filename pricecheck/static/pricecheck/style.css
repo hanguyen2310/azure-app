@@ -1,0 +1,38 @@
+html *{
+    font-family: brush-script-mt, cursive !important;
+}
+
+h1 {
+    color: #2ecc71;
+    font-size: 4rem;
+    font-family: brush-script-mt, cursive;
+}
+
+
+li a {
+    color: green;
+}
+.button {
+    display: block;
+    width: 115px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    border-color: lightslategray;
+    font-weight: bold;
+    line-height: 25px;
+    font-family: brush-script-mt, cursive;
+}
+.error_message {
+    color: red;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #2ecc71;
+    color: #fff;
+    border: 1px solid #2ecc71;
+    font-family: brush-script-mt, cursive;
+}
