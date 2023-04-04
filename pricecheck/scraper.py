@@ -8,16 +8,18 @@ from selenium.webdriver.support import expected_conditions as EC
 import platform
 
 # silent browser
-options = webdriver.FirefoxOptions()
+# options = webdriver.FirefoxOptions()
+options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 # check os if windows or linux
 
 if platform.system() == "Windows":
-    driver_path = "webdriver/windows/geckodriver.exe"
+    driver_path = "webdriver/windows/chromedriver.exe"
 if platform.system() == "Linux":
-    driver_path = "webdriver/linux/geckodriver"
+    driver_path = "webdriver/linux/chromedriver"
 
-browser = webdriver.Firefox(options=options, executable_path=driver_path)
+# browser = webdriver.Firefox(options=options, executable_path=driver_path)
+browser = webdriver.Chrome(options=options, executable_path=driver_path)
 
 def get_data(query, page='ebay'):
     page=page.lower()
@@ -97,7 +99,7 @@ def get_cashconverter_data(query):
     # r = requests.get(url)
     browser.get(url)
     # wait until the class product-item__body is loaded
-    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "product-item__body")))
+    WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "product-item")))
     browser.implicitly_wait(5)
 
     browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -110,7 +112,11 @@ def get_cashconverter_data(query):
         # image
         image = item.find('div', class_="product-item__image")
         if image:
-            image = "https://www.cashconverters.com.au/" + image.find('img')['src']
+            image_div = image.find('img')
+            if image_div:
+                image_src = "https://www.cashconverters.com.au/" + image.find('img')['src']
+            else:
+                image_src = ""
         else:
             continue
 
@@ -138,7 +144,7 @@ def get_cashconverter_data(query):
         else:
             continue
 
-        dict_item = {'image':image, 'title': title, 'itemlink': itemlink, 'price': price, 'shippingcost': shippingcost}
+        dict_item = {'image':image_src, 'title': title, 'itemlink': itemlink, 'price': price, 'shippingcost': shippingcost}
         list_items.append(dict_item)
 
     return list_items
